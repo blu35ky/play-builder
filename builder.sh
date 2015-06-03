@@ -15,7 +15,7 @@ if [ -z "${IMAGE_NAME}" ]; then
 fi
 if [ -f pre_dist.sh ] ; then
 	echo "Running pre_dist.sh script"
-	exec ./pre_dist.sh
+	./pre_dist.sh
 fi
 
 echo "Creating distribution"
@@ -27,6 +27,7 @@ find target -type f -name *.zip -exec unzip -d /opt/target {} \;
 echo "Linking into /opt/target/current"
 cd /opt/target
 find . -maxdepth 1 -type d ! -name '.' -exec ln -s {} current \;
+rm -Rf /opt/target/current/share
 # Link /opt/target/current/bin/app to startup script
 echo "Staging startup script"
 cd /opt/target/current/bin
@@ -43,4 +44,4 @@ ADD . /opt/play
 CMD /opt/play/current/bin/start $OPTIONS
 EOF
 echo "Building final docker image ${IMAGE_NAME}"  
-docker build $BUILD_OPTIONS -t $IMAGE_NAME . 
+docker build --rm=true $BUILD_OPTIONS -t $IMAGE_NAME . 
