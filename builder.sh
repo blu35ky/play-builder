@@ -15,7 +15,7 @@ if [ -z "${IMAGE_NAME}" ]; then
 fi
 if [ -f pre_dist.sh ] ; then
 	echo "Running pre_dist.sh script"
-	exec pre_dist.sh
+	exec ./pre_dist.sh
 fi
 
 echo "Creating distribution"
