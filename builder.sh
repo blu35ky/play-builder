@@ -43,5 +43,8 @@ ADD . /opt/play
 
 CMD /opt/play/current/bin/start $OPTIONS
 EOF
-echo "Building final docker image ${IMAGE_NAME}"  
+echo "Building final docker image ${IMAGE_NAME} using Dockerfile"
+echo "-----"
+cat Dockerfile
+echo "-----"  
 docker build --rm=true $BUILD_OPTIONS -t $IMAGE_NAME . 
