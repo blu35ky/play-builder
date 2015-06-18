@@ -1,8 +1,6 @@
-FROM ubuntu:vivid
+FROM java:8
 
-RUN apt-get -y update
-RUN apt-get install -y openjdk-8-jdk docker.io
-RUN apt-get install -y unzip
+RUN apt-get update && apt-get install -y docker.io unzip && apt-get clean
 
 VOLUME /root/.ivy2
 WORKDIR /opt/app
