@@ -1,6 +1,9 @@
 Play! builder
 ======================
 
+## Build Status
+[![Build Status](https://snap-ci.com/brickx/play-builder/branch/master/build_image)](https://snap-ci.com/brickx/play-builder/branch/master)
+
 ## Usage
 
 ```
