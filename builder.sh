@@ -43,14 +43,6 @@ ENV CONFIG_FILE application.conf
 CMD /opt/play/current/bin/start -Dconfig.resource=\$CONFIG_FILE $OPTIONS \$OPTIONS
 EOF
 
-# cat > Dockerfile <<EOF
-# FROM brickx/activator
-
-# RUN mkdir /opt/play
-# ADD . /opt/play
-# ENV CONFIG_FILE application.conf
-# CMD /opt/play/current/bin/start -Dconfig.resource=\$CONFIG_FILE $OPTIONS
-# EOF
 echo "Building final docker image ${IMAGE_NAME} using Dockerfile"
 echo "-----"
 cat Dockerfile
