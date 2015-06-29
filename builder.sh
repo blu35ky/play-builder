@@ -32,6 +32,10 @@ rm -Rf /opt/target/current/share
 echo "Staging startup script"
 cd /opt/target/current/bin
 find . -type f ! -name '*.bat' -exec mv {} start \;
+# Fix permissions, main reason is to stop having root-owner files on the host machine which would require root access to clean up
+OWNER=stat -c "%u" /opt/app/activator
+echo "Setting permissions on /opt/app to userid $OWNER"
+chown -R $OWNER /opt/app
 # Create dockerfile
 echo "Writing Dockerfile"
 cd /opt/target
