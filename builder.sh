@@ -39,6 +39,7 @@ chown -R $OWNER /opt/app
 # Create dockerfile
 echo "Writing Dockerfile"
 cd /opt/target
+docker pull java:8
 cat > Dockerfile <<EOF
 FROM java:8
 RUN mkdir /opt/play
